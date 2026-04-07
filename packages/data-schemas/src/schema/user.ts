@@ -141,6 +141,7 @@ const userSchema = new Schema<IUser>(
           model: { type: String, maxlength: 256 },
           endpoint: { type: String, maxlength: 256 },
           spec: { type: String, maxlength: 256 },
+          skillId: { type: String, maxlength: 256 },
         },
       ],
       default: [],

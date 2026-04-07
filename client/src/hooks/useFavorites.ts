@@ -41,6 +41,9 @@ const cleanFavorites = (favorites: Favorite[]): Favorite[] => {
       if (f.spec) {
         return { spec: f.spec };
       }
+      if (f.skillId) {
+        return { skillId: f.skillId };
+      }
       return null;
     })
     .filter((f): f is NonNullable<typeof f> => f !== null);
@@ -187,6 +190,30 @@ export default function useFavorites() {
     }
   };
 
+  const addFavoriteSkill = (skillId: string) => {
+    if (favorites.some((f) => f.skillId === skillId)) return;
+    saveFavorites([...favorites, { skillId }]);
+  };
+
+  const removeFavoriteSkill = (skillId: string) => {
+    saveFavorites(favorites.filter((f) => f.skillId !== skillId));
+  };
+
+  const isFavoriteSkill = (skillId: string | undefined | null) => {
+    if (!skillId) {
+      return false;
+    }
+    return favorites.some((f) => f.skillId === skillId);
+  };
+
+  const toggleFavoriteSkill = (skillId: string) => {
+    if (isFavoriteSkill(skillId)) {
+      removeFavoriteSkill(skillId);
+    } else {
+      addFavoriteSkill(skillId);
+    }
+  };
+
   /**
    * Reorder favorites and optionally persist the new order to the server.
    * This combines state update and persistence to avoid race conditions
@@ -229,6 +256,10 @@ export default function useFavorites() {
     toggleFavoriteAgent,
     toggleFavoriteModel,
     toggleFavoriteSpec,
+    addFavoriteSkill,
+    removeFavoriteSkill,
+    isFavoriteSkill,
+    toggleFavoriteSkill,
     reorderFavorites,
     /** Whether the favorites query is currently loading */
     isLoading: getFavoritesQuery.isLoading,

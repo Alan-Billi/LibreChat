@@ -212,6 +212,7 @@ export type TUserFavorite = {
   model?: string;
   endpoint?: string;
   spec?: string;
+  skillId?: string;
 };
 
 /* SharePoint Graph API Token */
