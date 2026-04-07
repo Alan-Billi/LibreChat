@@ -11,6 +11,11 @@ export type FavoriteModel = {
 export type FavoritesState = Favorite[];
 
 /**
- * This atom stores the user's favorite models/agents
+ * This atom stores the user's favorite models/agents (max 15, sidebar pins).
  */
 export const favoritesAtom = createTabIsolatedAtom<FavoritesState>('favorites', []);
+
+/**
+ * This atom stores the user's favorite skill IDs (max 50).
+ */
+export const skillFavoritesAtom = createTabIsolatedAtom<string[]>('skillFavorites', []);

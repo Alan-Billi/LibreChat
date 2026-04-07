@@ -1,6 +1,7 @@
 const { updateUser, getUserById } = require('~/models');
 
-const MAX_FAVORITES = 50;
+/** Maximum favorited models/agents shown in the sidebar. */
+const MAX_FAVORITES = 15;
 const MAX_STRING_LENGTH = 256;
 
 const updateFavoritesController = async (req, res) => {
@@ -28,7 +29,6 @@ const updateFavoritesController = async (req, res) => {
       const hasAgent = !!fav.agentId;
       const hasModel = !!(fav.model && fav.endpoint);
       const hasSpec = !!fav.spec;
-      const hasSkill = !!fav.skillId;
 
       if (fav.agentId && fav.agentId.length > MAX_STRING_LENGTH) {
         return res
@@ -55,11 +55,6 @@ const updateFavoritesController = async (req, res) => {
             .json({ message: `spec exceeds maximum length of ${MAX_STRING_LENGTH}` });
         }
       }
-      if (fav.skillId && fav.skillId.length > MAX_STRING_LENGTH) {
-        return res
-          .status(400)
-          .json({ message: `skillId exceeds maximum length of ${MAX_STRING_LENGTH}` });
-      }
 
       const hasPartialModel = !hasModel && !!(fav.model || fav.endpoint);
 
@@ -67,16 +62,16 @@ const updateFavoritesController = async (req, res) => {
         return res.status(400).json({ message: 'model and endpoint must be provided together' });
       }
 
-      const typeCount = [hasAgent, hasModel, hasSpec, hasSkill].filter(Boolean).length;
+      const typeCount = [hasAgent, hasModel, hasSpec].filter(Boolean).length;
       if (typeCount === 0) {
         return res.status(400).json({
-          message: 'Each favorite must have either agentId, model+endpoint, spec, or skillId',
+          message: 'Each favorite must have either agentId, model+endpoint, or spec',
         });
       }
 
       if (typeCount > 1) {
         return res.status(400).json({
-          message: 'Favorite cannot have multiple types (agentId, model/endpoint, spec, or skillId)',
+          message: 'Favorite cannot have multiple types (agentId, model/endpoint, or spec)',
         });
       }
 

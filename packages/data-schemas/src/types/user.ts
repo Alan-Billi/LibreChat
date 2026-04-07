@@ -43,6 +43,7 @@ export interface IUser extends Document {
     memories?: boolean;
   };
   favorites?: TUserFavorite[];
+  skillFavorites?: string[];
   createdAt?: Date;
   updatedAt?: Date;
   /** Field for external source identification (for consistency with TPrincipal schema) */
