@@ -88,15 +88,16 @@ export default function useSideNavLinks({
   const Links = useMemo(() => {
     const links: NavLink[] = [];
 
-    if (hasAccessToSkills) {
-      links.push({
-        title: 'com_ui_skills',
-        label: '',
-        icon: ScrollText,
-        id: 'skills',
-        Component: SkillsAccordion,
-      });
-    }
+    // WIP: Skills — uncomment to re-enable
+    // if (hasAccessToSkills) {
+    //   links.push({
+    //     title: 'com_ui_skills',
+    //     label: '',
+    //     icon: ScrollText,
+    //     id: 'skills',
+    //     Component: SkillsAccordion,
+    //   });
+    // }
 
     if (
       endpointsConfig?.[EModelEndpoint.agents] &&

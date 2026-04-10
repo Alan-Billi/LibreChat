@@ -142,6 +142,7 @@ export const ResourceCapabilityMap: Record<ResourceType, SystemCapability> = {
   [ResourceType.PROMPTGROUP]: SystemCapabilities.MANAGE_PROMPTS,
   [ResourceType.MCPSERVER]: SystemCapabilities.MANAGE_MCP_SERVERS,
   [ResourceType.REMOTE_AGENT]: SystemCapabilities.MANAGE_AGENTS,
+  [ResourceType.SKILL]: SystemCapabilities.MANAGE_SKILLS,
 };
 
 /**

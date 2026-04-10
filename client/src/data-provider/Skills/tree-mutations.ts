@@ -31,6 +31,7 @@ export const useUpdateSkillNodeMutation = (
     onError: (error, variables, context) => options?.onError?.(error, variables, context),
     onSuccess: (updated, variables, context) => {
       queryClient.invalidateQueries([QueryKeys.skillTree, skillId]);
+      queryClient.invalidateQueries([QueryKeys.skillNodeContent, skillId, variables.nodeId]);
       return options?.onSuccess?.(updated, variables, context);
     },
   });

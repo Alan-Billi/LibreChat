@@ -336,8 +336,8 @@ export default function AgentConfig() {
           />
         )}
 
-        {/* Skills Section */}
-        {hasSkillsAccess && (
+        {/* WIP: Skills — remove `false &&` to re-enable */}
+        {false && hasSkillsAccess && (
           <div className="mb-4">
             <label className="text-token-text-primary mb-2 block text-sm font-medium">
               {localize('com_ui_skills')}
@@ -577,7 +577,8 @@ export default function AgentConfig() {
           endpoint={EModelEndpoint.agents}
         />
       )}
-      {hasSkillsAccess && (
+      {/* WIP: Skills — remove `false &&` to re-enable */}
+      {false && hasSkillsAccess && (
         <SkillSelectDialog isOpen={showSkillDialog} setIsOpen={setShowSkillDialog} />
       )}
     </>

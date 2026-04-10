@@ -128,38 +128,39 @@ export const router = createBrowserRouter(
               path: 'prompts/:promptId',
               lazy: loadInlinePromptsView,
             },
-            {
-              path: 'skills',
-              element: <Navigate to="/skills/new" replace={true} />,
-            },
-            {
-              path: 'skills/new',
-              lazy: () =>
-                import('~/components/Skills/layouts/SkillsView').then((m) => ({
-                  Component: m.default,
-                })),
-            },
-            {
-              path: 'skills/:skillId',
-              lazy: () =>
-                import('~/components/Skills/layouts/SkillsView').then((m) => ({
-                  Component: m.default,
-                })),
-            },
-            {
-              path: 'skills/:skillId/edit',
-              lazy: () =>
-                import('~/components/Skills/layouts/SkillsView').then((m) => ({
-                  Component: m.default,
-                })),
-            },
-            {
-              path: 'skills/:skillId/file/:nodeId',
-              lazy: () =>
-                import('~/components/Skills/layouts/SkillsView').then((m) => ({
-                  Component: m.default,
-                })),
-            },
+            // WIP: Skills — uncomment routes to re-enable
+            // {
+            //   path: 'skills',
+            //   element: <Navigate to="/skills/new" replace={true} />,
+            // },
+            // {
+            //   path: 'skills/new',
+            //   lazy: () =>
+            //     import('~/components/Skills/layouts/SkillsView').then((m) => ({
+            //       Component: m.default,
+            //     })),
+            // },
+            // {
+            //   path: 'skills/:skillId',
+            //   lazy: () =>
+            //     import('~/components/Skills/layouts/SkillsView').then((m) => ({
+            //       Component: m.default,
+            //     })),
+            // },
+            // {
+            //   path: 'skills/:skillId/edit',
+            //   lazy: () =>
+            //     import('~/components/Skills/layouts/SkillsView').then((m) => ({
+            //       Component: m.default,
+            //     })),
+            // },
+            // {
+            //   path: 'skills/:skillId/file/:nodeId',
+            //   lazy: () =>
+            //     import('~/components/Skills/layouts/SkillsView').then((m) => ({
+            //       Component: m.default,
+            //     })),
+            // },
             {
               path: 'agents',
               element: (

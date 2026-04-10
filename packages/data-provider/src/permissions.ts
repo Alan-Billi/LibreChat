@@ -86,6 +86,7 @@ export const PERMISSION_TYPE_INTERFACE_FIELDS: Record<PermissionTypes, string> =
   [PermissionTypes.MARKETPLACE]: 'marketplace',
   [PermissionTypes.MCP_SERVERS]: 'mcpServers',
   [PermissionTypes.REMOTE_AGENTS]: 'remoteAgents',
+  [PermissionTypes.SKILLS]: 'skills',
 };
 
 /** Set of interface config field names that correspond to role permissions. */
